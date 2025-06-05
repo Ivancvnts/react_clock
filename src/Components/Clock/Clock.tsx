@@ -10,13 +10,13 @@ type State = {
 
 export class Clock extends Component<Props, State> {
   state: Readonly<State> = {
-    today: new Date().toLocaleTimeString(),
+    today: new Date().toUTCString().slice(-12, -4),
   };
 
   timerId = 0;
 
   updateDate = () => {
-    this.setState({ today: new Date().toLocaleTimeString() });
+    this.setState({ today: new Date().toUTCString().slice(-12, -4) });
   };
 
   componentDidMount(): void {
