@@ -25,7 +25,7 @@ export class App extends Component<{}, State> {
     this.setState({ clockName: getRandomName() });
   };
 
-  handleRightClick = (event: MouseEvent) => {
+  handleRightClick = (event: globalThis.MouseEvent) => {
     event.preventDefault();
     this.setState({ isClockVisible: false });
   };

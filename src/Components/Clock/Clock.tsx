@@ -10,13 +10,13 @@ type State = {
 
 export class Clock extends Component<Props, State> {
   state: Readonly<State> = {
-    today: new Date().toUTCString().slice(-12, -4),
+    today: new Date().toLocaleTimeString(),
   };
 
   timerId = 0;
 
   updateDate = () => {
-    this.setState({ today: new Date().toUTCString().slice(-12, -4) });
+    this.setState({ today: new Date().toLocaleTimeString() });
   };
 
   componentDidMount(): void {
@@ -43,15 +43,11 @@ export class Clock extends Component<Props, State> {
   }
 
   render() {
-    const isPm: string =
-      Number(this.state.today.substring(0, 2)) < 12 ? 'a.m.' : 'p.m.';
-
     return (
       <div className="Clock">
         <strong className="Clock__name">{this.props.name}</strong>
         {' time is '}
         <span className="Clock__time">{this.state.today}</span>
-        <span>{isPm}</span>
       </div>
     );
   }
